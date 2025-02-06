@@ -38,18 +38,29 @@ A REST API to process receipts and calculate reward points based on predefined r
 
    Request Body
 
-   ```bash
-   {
-      "retailer": "Target",
-      "purchaseDate": "2022-01-01",
-      "purchaseTime": "13:01",
-      "items": [
-         {"shortDescription": "Pepsi - 12-oz", "price": "1.25"},
-         {"shortDescription": "Dasani", "price": "1.40"}
-               ],
-      "total": "2.65"
-   }
-   ```
+   ```json
+{
+  "retailer": "M&M Corner Market",
+  "purchaseDate": "2022-03-20",
+  "purchaseTime": "14:33",
+  "items": [
+    {
+      "shortDescription": "Gatorade",
+      "price": "2.25"
+    },{
+      "shortDescription": "Gatorade",
+      "price": "2.25"
+    },{
+      "shortDescription": "Gatorade",
+      "price": "2.25"
+    },{
+      "shortDescription": "Gatorade",
+      "price": "2.25"
+    }
+  ],
+  "total": "9.00"
+}
+```
 
    #### Response
    - **Success (200):**
@@ -131,29 +142,33 @@ A REST API to process receipts and calculate reward points based on predefined r
    ```bash
 curl -X POST http://localhost:5000/receipts/process \
   -H "Content-Type: application/json" \
+  -d '<json-content>'
+   ```
+
+   - **For example**
+   ```bash
+curl -X POST http://localhost:5000/receipts/process \
+  -H "Content-Type: application/json" \
   -d '{
-  "retailer": "Target",
-  "purchaseDate": "2022-01-01",
-  "purchaseTime": "13:01",
+  "retailer": "M&M Corner Market",
+  "purchaseDate": "2022-03-20",
+  "purchaseTime": "14:33",
   "items": [
     {
-      "shortDescription": "Mountain Dew 12PK",
-      "price": "6.49"
+      "shortDescription": "Gatorade",
+      "price": "2.25"
     },{
-      "shortDescription": "Emils Cheese Pizza",
-      "price": "12.25"
+      "shortDescription": "Gatorade",
+      "price": "2.25"
     },{
-      "shortDescription": "Knorr Creamy Chicken",
-      "price": "1.26"
+      "shortDescription": "Gatorade",
+      "price": "2.25"
     },{
-      "shortDescription": "Doritos Nacho Cheese",
-      "price": "3.35"
-    },{
-      "shortDescription": "   Klarbrunn 12-PK 12 FL OZ  ",
-      "price": "12.00"
+      "shortDescription": "Gatorade",
+      "price": "2.25"
     }
   ],
-  "total": "35.35"
+  "total": "9.00"
 }'
    ```
 
@@ -161,6 +176,12 @@ curl -X POST http://localhost:5000/receipts/process \
    ```bash
    curl http://localhost:5000/receipts/<receipt-id>/points
    ```
+
+   - **For example**
+   ```bash
+   curl http://localhost:5000/receipts/3b1a3fd1-ca38-40ef-8bd5-c6f64fd8c17c/points
+   ```
+
 
 
 
