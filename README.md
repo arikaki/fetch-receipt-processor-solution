@@ -10,7 +10,7 @@ A REST API to process receipts and calculate reward points based on predefined r
    cd fetch-receipt-processor-solution.git
    ```
 
-2. Install dependencies:
+<!-- 2. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
@@ -18,9 +18,9 @@ A REST API to process receipts and calculate reward points based on predefined r
 3. Run the application:
    ```bash
    flask run --port=5000
-   ```
+   ``` -->
 
-4. Docker: [Optional]
+2. Docker: 
 
    Build and run the container:
    ```bash
@@ -89,13 +89,7 @@ A REST API to process receipts and calculate reward points based on predefined r
    ```
 
 
-### 3. **Testing**
-
-   ### Run Unit Tests
-
-   ```bash
-   pytest test_app.py -v
-   ```
+<!-- ### 3. **Testing**
 
    #### Example Test Cases
 
@@ -126,17 +120,14 @@ A REST API to process receipts and calculate reward points based on predefined r
       "items": [{"shortDescription": "Pepsi", "price": "1.25"}],
       "total": "2.6"
    }'
-   ```
+   ``` -->
 
-### 4. **Docker Support**  [optional]
-
-   #### Build and Run
-   ```bash
-   docker build -t receipt-processor .
-   docker run -p 5000:5000 receipt-processor
-   ```
+## **Docker Support**  
 
    #### Test with Docker
+
+   #### [POST]
+
    ```bash
    curl -X POST http://localhost:5000/receipts/process \
    -H "Content-Type: application/json" \
@@ -153,6 +144,14 @@ A REST API to process receipts and calculate reward points based on predefined r
       "total": "9.00"
    }'
    ```
+
+   #### [GET]
+   ```bash
+   curl http://localhost:5000/receipts/<receipt-id>/points
+   ```
+
+
+
 
 
 
